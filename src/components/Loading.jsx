@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import gsap from "gsap";
-import { setLoading } from "../redux/story"; // ✅ import the action
+import { setLoading } from "../redux/story"; 
 
 const LoadingScreen = () => {
   const loaderRef = useRef(null);
@@ -31,7 +31,7 @@ const LoadingScreen = () => {
         opacity: 0,
         duration: 1,
         onComplete: () => {
-          dispatch(setLoading(false)); // ✅ now it works
+          dispatch(setLoading(false));
         },
       });
     }, 3000);
