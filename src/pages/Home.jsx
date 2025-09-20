@@ -12,7 +12,7 @@ const HomePage = () => {
   const stories = useSelector(state => state.stories.stories);
 
   useEffect(() => {
-    // Hero animations
+
     gsap.fromTo(titleRef.current, 
       { y: 100, opacity: 0, scale: 0.8 },
       { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out', delay: 0.3 }
@@ -23,7 +23,7 @@ const HomePage = () => {
       { y: 0, opacity: 1, duration: 1, delay: 0.8, ease: 'power3.out' }
     );
 
-    // Stories section animation
+    
     gsap.fromTo(storiesRef.current,
       { y: 100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.2, delay: 1, ease: 'power3.out' }
@@ -32,7 +32,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      {/* Hero Section */}
+     
       <section 
         ref={heroRef}
         className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -40,7 +40,7 @@ const HomePage = () => {
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
         }}
       >
-        {/* Animated background elements */}
+       
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
             <div
@@ -91,7 +91,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Featured Stories Preview */}
+     
       <section 
         ref={storiesRef}
         className="py-24 bg-gray-900"
