@@ -13,7 +13,7 @@ const StoryCard = ({ story, index }) => {
   useEffect(() => {
     const tl = gsap.timeline();
     
-    // Initial card animation
+    
     tl.fromTo(
       cardRef.current,
       { 
@@ -35,7 +35,7 @@ const StoryCard = ({ story, index }) => {
       }
     );
 
-    // Floating animation
+   
     gsap.to(cardRef.current, {
       y: "random(-10, 10)",
       x: "random(-5, 5)",
@@ -47,7 +47,7 @@ const StoryCard = ({ story, index }) => {
       delay: index * 0.5
     });
 
-    // Glow effect animation
+
     gsap.to(glowRef.current, {
       opacity: "random(0.3, 0.7)",
       scale: "random(1, 1.2)",
@@ -62,7 +62,7 @@ const StoryCard = ({ story, index }) => {
   const handleMouseEnter = () => {
     setIsHovered(true);
     
-    // Advanced hover animations
+    
     const tl = gsap.timeline();
     
     tl.to(cardRef.current, {
@@ -117,7 +117,7 @@ const StoryCard = ({ story, index }) => {
   };
 
   const handleClick = () => {
-    // Click animation before navigation
+   
     gsap.to(cardRef.current, {
       scale: 0.95,
       duration: 0.1,
@@ -130,7 +130,7 @@ const StoryCard = ({ story, index }) => {
     });
   };
 
-  // Get category color
+ 
   const getCategoryColor = () => {
     const colors = {
       'Sci-Fi': 'from-cyan-400 to-blue-500',
@@ -144,7 +144,7 @@ const StoryCard = ({ story, index }) => {
 
   return (
     <div className="relative perspective-1000">
-      {/* Glow effect */}
+  
       <div 
         ref={glowRef}
         className="absolute inset-0 rounded-3xl opacity-50 blur-xl -z-10"
@@ -162,7 +162,7 @@ const StoryCard = ({ story, index }) => {
         onMouseLeave={handleMouseLeave}
         style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Main card */}
+       
         <div 
           className="relative overflow-hidden rounded-3xl h-[450px] shadow-2xl border border-white/10 backdrop-blur-sm"
           style={{ 
@@ -170,35 +170,34 @@ const StoryCard = ({ story, index }) => {
             backgroundBlendMode: 'overlay'
           }}
         >
-          {/* Animated overlay */}
+    
           <div 
             ref={overlayRef}
             className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/40 transition-all duration-500"
           />
           
-          {/* Noise texture overlay */}
           <div className="absolute inset-0 opacity-20 mix-blend-multiply bg-noise" />
           
-          {/* Top section - Category badge */}
+          
           <div className="absolute top-6 left-6 z-20">
             <div className={`px-4 py-2 rounded-full bg-gradient-to-r ${getCategoryColor()} text-white text-sm font-bold shadow-lg backdrop-blur-sm border border-white/20`}>
               {story.category || 'Story'}
             </div>
           </div>
 
-          {/* Top right - Bookmark icon */}
+          
           <div className="absolute top-6 right-6 z-20">
             <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-300">
               <span className="text-white text-lg">🔖</span>
             </div>
           </div>
 
-          {/* Content */}
+         
           <div 
             ref={contentRef}
             className="relative z-10 h-full flex flex-col justify-between text-white p-8"
           >
-            {/* Top content */}
+       
             <div className="flex-1 flex flex-col justify-center">
               <div className="space-y-4">
                 <h3 className="text-4xl font-black leading-tight bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
@@ -210,9 +209,9 @@ const StoryCard = ({ story, index }) => {
               </div>
             </div>
 
-            {/* Bottom section */}
+
             <div className="space-y-4">
-              {/* Story stats */}
+             
               <div className="flex items-center space-x-4 text-sm text-white/70">
                 <div className="flex items-center space-x-1">
                   <span>⏱️</span>
@@ -228,11 +227,11 @@ const StoryCard = ({ story, index }) => {
                 </div>
               </div>
 
-              {/* Action area */}
+             
               <div className="flex items-center justify-between">
               <button 
   onClick={(e) => {
-    e.stopPropagation(); // prevent parent card click duplication
+    e.stopPropagation(); 
     handleClick();
   }}
   className="group/btn flex items-center space-x-3 px-8 py-4 bg-white/15 backdrop-blur-md rounded-full border border-white/20 hover:bg-white/25 hover:border-white/30 transition-all duration-300 font-bold text-lg shadow-lg"
@@ -244,7 +243,7 @@ const StoryCard = ({ story, index }) => {
 </button>
 
 
-                {/* Reading progress indicator */}
+               
                 <div className="flex items-center space-x-2">
                   <div className="w-16 h-2 bg-white/20 rounded-full overflow-hidden">
                     <div 
@@ -258,9 +257,9 @@ const StoryCard = ({ story, index }) => {
             </div>
           </div>
 
-          {/* Animated elements */}
+          
           <div className="absolute inset-0 pointer-events-none">
-            {/* Floating particles */}
+         
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
@@ -274,12 +273,12 @@ const StoryCard = ({ story, index }) => {
               />
             ))}
             
-            {/* Gradient mesh overlay */}
+            
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
           </div>
         </div>
 
-        {/* Hover reflection effect */}
+    
         <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${isHovered ? 'animate-pulse' : ''}`} />
       </div>
     </div>
