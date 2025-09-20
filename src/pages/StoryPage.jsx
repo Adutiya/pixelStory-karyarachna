@@ -20,7 +20,7 @@ const StoryViewPage = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // FlowFest-style vibrant colors
+
   const colors = ["#FF6B35", "#F7931E", "#FFD23F", "#06FFA5", "#4D96FF", "#9B59B6", "#E91E63"];
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const StoryViewPage = () => {
       
       setScrollProgress(progress);
 
-      // FlowFest-style floating animations
+
       floatingRef.current.forEach((el, i) => {
         if (el) {
           const speed = 0.5 + (i % 4) * 0.3;
@@ -50,7 +50,7 @@ const StoryViewPage = () => {
         }
       });
 
-      // Dynamic title effects
+  
       if (titleRef.current) {
         const titleOffset = scrollY * 0.4;
         const titleScale = Math.max(0.5, 1 - progress * 0.5);
@@ -65,13 +65,13 @@ const StoryViewPage = () => {
         `;
       }
 
-      // Parallax hero section
+     
       if (heroRef.current) {
         heroRef.current.style.transform = `translateY(${scrollY * 0.3}px)`;
         heroRef.current.style.filter = `brightness(${1 - progress * 0.4})`;
       }
 
-      // Animate story sections with FlowFest flair
+     
       sectionsRef.current.forEach((section, i) => {
         if (section) {
           const rect = section.getBoundingClientRect();
@@ -83,7 +83,7 @@ const StoryViewPage = () => {
             setCurrentSection(i);
           }
 
-          // FlowFest-style morphing animations
+          
           const morphScale = 0.7 + sectionProgress * 0.3;
           const morphRotate = (sectionProgress - 0.5) * 15;
           const morphTranslateY = (1 - sectionProgress) * 150;
@@ -97,7 +97,7 @@ const StoryViewPage = () => {
           `;
           section.style.opacity = sectionProgress;
           
-          // Dynamic color shifting
+       
           section.style.filter = `
             hue-rotate(${sectionProgress * 360}deg)
             saturate(${1 + sectionProgress * 0.5})
@@ -106,7 +106,7 @@ const StoryViewPage = () => {
         }
       });
 
-      // Progress bar animation
+     
       if (progressRef.current) {
         progressRef.current.style.width = `${progress * 100}%`;
         progressRef.current.style.filter = `hue-rotate(${progress * 360}deg)`;
@@ -124,7 +124,7 @@ const StoryViewPage = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    handleScroll(); // Initial call
+    handleScroll(); 
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -152,7 +152,7 @@ const StoryViewPage = () => {
 
   return (
     <div ref={pageRef} className="relative overflow-hidden">
-      {/* Custom cursor */}
+      
       <div
         ref={cursorRef}
         className="fixed w-6 h-6 pointer-events-none z-50 mix-blend-difference"
@@ -164,7 +164,7 @@ const StoryViewPage = () => {
         }}
       />
 
-      {/* FlowFest-style animated progress bar */}
+     
       <div className="fixed top-0 left-0 w-full h-2 bg-black/10 z-50">
         <div
           ref={progressRef}
@@ -175,7 +175,7 @@ const StoryViewPage = () => {
         </div>
       </div>
 
-      {/* Dynamic background with FlowFest colors */}
+      
       <div className="fixed inset-0 -z-10">
         <div
           className="absolute inset-0"
@@ -190,7 +190,7 @@ const StoryViewPage = () => {
         />
       </div>
 
-      {/* FlowFest-style floating elements */}
+      
       <div className="fixed inset-0 pointer-events-none z-10">
         {Array.from({ length: 20 }).map((_, i) => (
           <div
@@ -217,7 +217,7 @@ const StoryViewPage = () => {
         ))}
       </div>
 
-      {/* Navigation */}
+      
       <nav className="fixed top-6 left-6 z-40">
         <button
           onClick={() => navigate("/stories")}
@@ -227,20 +227,20 @@ const StoryViewPage = () => {
         </button>
       </nav>
 
-      {/* Reading progress indicator */}
+      
       <div className="fixed top-6 right-6 z-40">
         <div className="px-4 py-2 bg-white/20 backdrop-blur-md text-white text-sm font-bold rounded-full border border-white/30">
           {currentSection + 1} / {storyParagraphs.length}
         </div>
       </div>
 
-      {/* FlowFest-style hero section */}
+    
       <section
         ref={heroRef}
         className="min-h-screen flex items-center justify-center relative"
       >
         <div className="text-center max-w-6xl mx-auto px-6 relative z-20">
-          {/* Category and time badges */}
+         
           <div className="mb-8 flex justify-center gap-4">
             <span className="px-6 py-2 bg-orange-500 text-white font-bold rounded-full text-sm border-2 border-white/50">
               {story.category}
@@ -250,7 +250,7 @@ const StoryViewPage = () => {
             </span>
           </div>
           
-          {/* FlowFest-style massive title */}
+         
           <h1
             ref={titleRef}
             className="text-7xl md:text-9xl lg:text-[12rem] font-black text-white mb-8 leading-none relative"
@@ -267,12 +267,12 @@ const StoryViewPage = () => {
             {story.title}
           </h1>
           
-          {/* Subtitle with typewriter effect */}
+          
           <div className="text-2xl text-white/90 mb-12 font-medium">
             Scroll to discover the story...
           </div>
           
-          {/* FlowFest-style scroll indicator */}
+          
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
             <div className="w-8 h-16 border-4 border-white/60 rounded-full flex justify-center p-2 animate-bounce">
               <div className="w-2 h-6 bg-gradient-to-b from-orange-500 to-pink-500 rounded-full animate-pulse"></div>
@@ -281,7 +281,7 @@ const StoryViewPage = () => {
         </div>
       </section>
 
-      {/* Story content with FlowFest animations */}
+      
       <div className="relative z-20">
         {storyParagraphs.map((paragraph, index) => (
           <section
@@ -290,7 +290,7 @@ const StoryViewPage = () => {
             className="min-h-screen flex items-center justify-center px-6 py-20"
           >
             <div className="max-w-5xl mx-auto relative">
-              {/* FlowFest-style content card */}
+            
               <div 
                 className="relative p-12 rounded-3xl overflow-hidden"
                 style={{
@@ -308,20 +308,20 @@ const StoryViewPage = () => {
                   `,
                 }}
               >
-                {/* Paragraph text */}
+                
                 <p className="text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed font-light mb-8">
                   {paragraph}
                 </p>
                 
-                {/* FlowFest-style decorative elements */}
+               
                 <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-full animate-pulse opacity-80"></div>
                 <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full animate-pulse delay-1000 opacity-80"></div>
                 
-                {/* Interactive corner elements */}
+               
                 <div className="absolute top-4 right-4 w-4 h-4 bg-white rounded-full opacity-40 cursor-pointer hover:opacity-100 hover:scale-150 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-50 cursor-pointer hover:opacity-100 hover:scale-125 transition-all duration-300"></div>
                 
-                {/* Animated gradient overlay */}
+             
                 <div 
                   className="absolute inset-0 opacity-30 pointer-events-none"
                   style={{
@@ -335,7 +335,7 @@ const StoryViewPage = () => {
         ))}
       </div>
 
-      {/* FlowFest-style ending section */}
+    
       <section className="min-h-screen flex items-center justify-center bg-gradient-to-t from-black/50 to-transparent">
         <div className="text-center">
           <h2 className="text-6xl md:text-8xl text-white font-black mb-8">
@@ -353,7 +353,7 @@ const StoryViewPage = () => {
         </div>
       </section>
 
-      {/* FlowFest-style animations */}
+      
       <style jsx>{`
         @keyframes gradientFlow {
           0%, 100% { background-position: 0% 50%; }
