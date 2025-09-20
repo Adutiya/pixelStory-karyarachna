@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StoryCard from "../components/StoryCard";
 
-// Register ScrollTrigger plugin
+
 gsap.registerPlugin(ScrollTrigger);
 
 const StoriesPage = () => {
@@ -21,20 +21,20 @@ const StoriesPage = () => {
   const [scrollY, setScrollY] = useState(0);
   const [activeFilter, setActiveFilter] = useState('All');
 
-  // Categories for filtering
+ 
   const categories = ['All', 'Sci-Fi', 'Fantasy', 'Mystery', 'Historical', 'Adventure'];
   
-  // Filter stories based on active category
+  
   const filteredStories = activeFilter === 'All' 
     ? stories 
     : stories.filter(story => story.category === activeFilter);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial page load animation
+      
       const tl = gsap.timeline();
       
-      // Parallax background animation
+   
       tl.fromTo(parallaxBgRef.current, 
         { 
           y: 100,
@@ -52,7 +52,7 @@ const StoriesPage = () => {
         }
       );
 
-      // Hero section animations
+     
       tl.fromTo(titleRef.current,
         { 
           y: 150,
@@ -87,7 +87,7 @@ const StoriesPage = () => {
         "-=0.5"
       );
 
-      // Floating elements animation
+     
       floatingElementsRef.current.forEach((el, i) => {
         if (el) {
           gsap.to(el, {
@@ -104,7 +104,7 @@ const StoriesPage = () => {
         }
       });
 
-      // Scroll-triggered animations
+      
       ScrollTrigger.create({
         trigger: heroRef.current,
         start: "top top",
@@ -113,20 +113,20 @@ const StoriesPage = () => {
         onUpdate: (self) => {
           const progress = self.progress;
           
-          // Parallax title effect
+        
           gsap.set(titleRef.current, {
             y: progress * -100,
             scale: 1 - progress * 0.3,
             opacity: 1 - progress * 0.8
           });
 
-          // Parallax subtitle
+   
           gsap.set(subtitleRef.current, {
             y: progress * -80,
             opacity: 1 - progress * 1.2
           });
 
-          // Background parallax
+
           gsap.set(parallaxBgRef.current, {
             y: progress * -200,
             scale: 1 + progress * 0.3
@@ -134,7 +134,7 @@ const StoriesPage = () => {
         }
       });
 
-      // Grid reveal animation
+      
       ScrollTrigger.create({
         trigger: gridRef.current,
         start: "top 80%",
@@ -156,7 +156,7 @@ const StoriesPage = () => {
         }
       });
 
-      // Mouse parallax effect
+      
       const handleMouseMove = (e) => {
         const { clientX, clientY } = e;
         const { innerWidth, innerHeight } = window;
@@ -177,7 +177,7 @@ const StoriesPage = () => {
 
       window.addEventListener('mousemove', handleMouseMove);
 
-      // Scroll position tracking
+      
       const handleScroll = () => {
         setScrollY(window.scrollY);
       };
@@ -192,7 +192,7 @@ const StoriesPage = () => {
     return () => ctx.revert();
   }, []);
 
-  // Filter change animation
+  
   const handleFilterChange = (category) => {
     if (category !== activeFilter) {
       gsap.to(gridRef.current, {
@@ -215,7 +215,7 @@ const StoriesPage = () => {
 
   return (
     <div ref={pageRef} className="min-h-screen bg-gray-950 overflow-hidden">
-      {/* Animated Background */}
+     
       <div 
         ref={parallaxBgRef}
         className="fixed inset-0 -z-10"
@@ -229,7 +229,7 @@ const StoriesPage = () => {
         }}
       />
 
-      {/* Floating Elements */}
+     
       {Array.from({ length: 12 }).map((_, i) => (
         <div
           key={i}
@@ -257,10 +257,10 @@ const StoriesPage = () => {
         </div>
       ))}
 
-      {/* Hero Section */}
+      
       <section ref={heroRef} className="relative pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          {/* Main Title */}
+         
           <h1 
             ref={titleRef}
             className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-none"
@@ -285,7 +285,7 @@ const StoriesPage = () => {
             STORIES
           </h1>
 
-          {/* Subtitle */}
+        
           <p 
             ref={subtitleRef}
             className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12"
@@ -294,7 +294,7 @@ const StoriesPage = () => {
             creating unique narratives that evolve with every decision you make.
           </p>
 
-          {/* Stats */}
+        
           <div ref={statsRef} className="flex justify-center space-x-8 mb-16">
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-1">{stories.length}+</div>
@@ -312,7 +312,7 @@ const StoriesPage = () => {
         </div>
       </section>
 
-      {/* Filter Bar */}
+      
       <section ref={filterBarRef} className="sticky top-20 z-40 pb-8">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
@@ -341,7 +341,7 @@ const StoriesPage = () => {
         </div>
       </section>
 
-      {/* Stories Grid */}
+     
       <section className="pb-32">
         <div className="max-w-7xl mx-auto px-6">
           <div 
@@ -369,7 +369,7 @@ const StoriesPage = () => {
         </div>
       </section>
 
-      {/* Scroll Indicator */}
+      
       <div className="fixed bottom-8 right-8 z-50">
         <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center">
           <div 
